@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<title>Happy Birthday, Miss Muchiri 🌸</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cinzel:wght@400;600&family=Great+Vibes&family=Raleway:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#1a0828;--bg2:#2a0d3e;--rose:#e8729a;--rose2:#f0a0bb;
+  --teal:#5ecfcd;--gold:#f5c842;--cream:#fff0f8;--muted:#c4a0d0;
+  --deep:#0d0118;--light:#fce8f5;--mint:#a8edea;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;/home/j_parrot/Documents/muchiri/Ruger, Bnxn - Bae Bae (Official Audio).mp3}
+body{background:var(--bg);color:var(--light);font-family:'Cormorant Garamond',serif;overflow-x:hidden;}
+.page{display:none;min-height:100vh;}.page.active{display:block;}
+
+/* FLOATING PETALS */
+.petal-field{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.petal{position:absolute;top:-30px;font-size:clamp(10px,2vw,16px);opacity:0;animation:fallPetal linear infinite;}
+@keyframes fallPetal{0%{opacity:0;transform:translateY(0) rotate(0deg)}10%{opacity:.9}85%{opacity:.7}100%{opacity:0;transform:translateY(110vh) rotate(540deg)}}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;font-family:'Cinzel',serif;font-size:clamp(.52rem,.85vw+.28rem,.68rem);letter-spacing:.2em;text-transform:uppercase;border:none;outline:none;cursor:pointer;transition:all .3s ease;position:relative;overflow:hidden;white-space:nowrap;}
+.btn:active{transform:scale(.95)!important;}
+.btn-rose{background:linear-gradient(135deg,#c0547a,var(--rose));color:#fff;padding:.8rem 1.8rem;border-radius:30px;box-shadow:0 4px 20px rgba(232,114,154,.4);}
+.btn-rose:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,114,154,.55);}
+.btn-teal{background:linear-gradient(135deg,#3ab8b6,var(--teal));color:#fff;padding:.8rem 1.8rem;border-radius:30px;box-shadow:0 4px 20px rgba(94,207,205,.3);}
+.btn-teal:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(94,207,205,.45);}
+.btn-outline{background:transparent;color:var(--rose2);padding:.75rem 1.6rem;border:1px solid var(--rose2);border-radius:30px;}
+.btn-outline:hover{background:rgba(232,114,154,.1);transform:translateY(-2px);}
+.btn-gold{background:linear-gradient(135deg,#d4a012,var(--gold));color:#1a0828;padding:.8rem 1.8rem;border-radius:30px;font-weight:600;box-shadow:0 4px 20px rgba(245,200,66,.3);}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(245,200,66,.45);}
+.btn-pill{background:linear-gradient(135deg,var(--rose),#b04070);color:#fff;padding:.7rem 1.6rem;border-radius:50px;box-shadow:0 4px 18px rgba(232,114,154,.35);}
+.btn-pill:hover{transform:translateY(-3px) scale(1.04);}
+.btn-round{width:46px;height:46px;border-radius:50%;background:rgba(232,114,154,.15);color:var(--rose2);border:1px solid rgba(232,114,154,.35);font-size:1.1rem;display:inline-flex;align-items:center;justify-content:center;transition:all .3s;flex-shrink:0;}
+.btn-round:hover{background:var(--rose);color:#fff;transform:scale(1.12) rotate(10deg);}
+
+/* SECRET BUTTONS */
+.btn-sec{background:linear-gradient(135deg,#3ab8b6,#2a8886);color:#fff;padding:.8rem 1.8rem;border-radius:30px;box-shadow:0 4px 20px rgba(94,207,205,.3);font-family:'Cinzel',serif;font-size:clamp(.52rem,.85vw+.28rem,.68rem);letter-spacing:.2em;text-transform:uppercase;border:none;cursor:pointer;transition:all .3s;}
+.btn-sec:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(94,207,205,.45);}
+.btn-sec-outline{background:transparent;color:var(--mint);padding:.75rem 1.6rem;border:1px solid var(--mint);border-radius:30px;font-family:'Cinzel',serif;font-size:clamp(.52rem,.85vw+.28rem,.68rem);letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:all .3s;}
+.btn-sec-outline:hover{background:rgba(168,237,234,.1);transform:translateY(-2px);}
+.btn-sec-round{width:46px;height:46px;border-radius:50%;background:rgba(94,207,205,.15);color:var(--mint);border:1px solid rgba(94,207,205,.3);font-size:1.1rem;display:inline-flex;align-items:center;justify-content:center;transition:all .3s;flex-shrink:0;}
+.btn-sec-round:hover{background:var(--teal);color:#fff;transform:scale(1.12) rotate(10deg);}
+
+/* LOCK SCREEN */
+#lockScreen{position:fixed;inset:0;z-index:500;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1.5rem;overflow-y:auto;background:radial-gradient(ellipse at 50% 30%,#3d1060 0%,#0d0118 70%);}
+#lockScreen.fade-out{animation:fadeOutLock .8s ease forwards;}
+@keyframes fadeOutLock{to{opacity:0;pointer-events:none;}}
+.lock-flower{font-size:clamp(2.5rem,8vw,4.5rem);display:block;margin-bottom:.8rem;animation:flowerSpin 4s ease infinite;}
+@keyframes flowerSpin{0%,100%{transform:rotate(-8deg) scale(1)}50%{transform:rotate(8deg) scale(1.1)}}
+.lock-title{font-family:'Cinzel',serif;font-size:clamp(.52rem,1.2vw,.7rem);letter-spacing:.5em;color:var(--rose2);text-transform:uppercase;margin-bottom:.5rem;}
+.lock-name{font-family:'Great Vibes',cursive;font-size:clamp(3rem,11vw,7rem);background:linear-gradient(135deg,var(--rose),var(--rose2),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:.3rem;filter:drop-shadow(0 0 20px rgba(232,114,154,.4));}
+.lock-sub{font-family:'Cinzel',serif;font-size:clamp(.55rem,1.2vw,.72rem);letter-spacing:.3em;color:rgba(232,114,154,.7);text-transform:uppercase;margin-bottom:1.2rem;}
+.lock-divider{width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--rose2),transparent);margin:0 auto 1.2rem;}
+.lock-hint{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(.95rem,2vw,1.1rem);color:rgba(252,232,245,.7);margin-bottom:1rem;line-height:1.6;}
+.pin-wrap{display:flex;gap:.7rem;justify-content:center;margin-bottom:.9rem;}
+.pin-dot{width:13px;height:13px;border-radius:50%;background:rgba(232,114,154,.12);border:1px solid rgba(232,114,154,.4);transition:all .3s;}
+.pin-dot.filled{background:var(--rose);box-shadow:0 0 12px rgba(232,114,154,.7);}
+.numpad{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;max-width:240px;width:100%;margin:0 auto .9rem;}
+.num-btn{background:rgba(232,114,154,.1);border:1px solid rgba(232,114,154,.2);color:var(--light);font-family:'Cinzel',serif;font-size:clamp(.9rem,2vw,1.1rem);padding:.8rem;border-radius:12px;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;}
+.num-btn:hover{background:rgba(232,114,154,.3);border-color:var(--rose2);}
+.num-btn:active{transform:scale(.92);}
+.lock-error{font-family:'Raleway',sans-serif;font-size:.75rem;color:#f87171;min-height:1.1rem;margin-bottom:.4rem;}
+.fan-entry-box{margin-top:1rem;background:rgba(94,207,205,.08);border:1px solid rgba(94,207,205,.25);border-radius:16px;padding:.9rem 1.4rem;max-width:270px;width:100%;cursor:pointer;transition:all .3s;text-align:center;}
+.fan-entry-box:hover{background:rgba(94,207,205,.15);border-color:rgba(94,207,205,.5);transform:translateY(-2px);}
+.fan-entry-icon{font-size:1.5rem;display:block;margin-bottom:.3rem;}
+.fan-entry-title{font-family:'Cinzel',serif;font-size:clamp(.58rem,1.2vw,.7rem);letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin-bottom:.2rem;display:block;}
+.fan-entry-sub{font-family:'Raleway',sans-serif;font-size:.68rem;color:rgba(252,232,245,.45);}
+
+/* FIXED UI */
+.back-btn{position:fixed;top:.9rem;left:.9rem;z-index:100;background:rgba(13,1,24,.85);color:var(--teal);border:1px solid rgba(94,207,205,.3);font-family:'Cinzel',serif;font-size:clamp(.48rem,1vw,.58rem);letter-spacing:.18em;text-transform:uppercase;padding:.5rem .9rem;border-radius:20px;cursor:pointer;backdrop-filter:blur(8px);display:none;transition:all .3s;}
+.back-btn.show{display:block;}
+.login-btn{position:fixed;top:.9rem;right:.9rem;z-index:100;font-family:'Cinzel',serif;font-size:clamp(.48rem,1vw,.58rem);letter-spacing:.18em;text-transform:uppercase;padding:.5rem .9rem;border-radius:20px;cursor:pointer;backdrop-filter:blur(8px);transition:all .3s;border:none;}
+.login-btn.pub{background:rgba(13,1,24,.85);color:var(--rose2);border:1px solid rgba(232,114,154,.3);}
+.login-btn.sec{background:rgba(13,1,24,.85);color:var(--teal);border:1px solid rgba(94,207,205,.3);}
+
+/* TOAST */
+.toast{position:fixed;bottom:4rem;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(13,1,24,.95);color:var(--rose2);font-family:'Raleway',sans-serif;font-size:clamp(.62rem,1.2vw,.75rem);padding:.6rem 1.4rem;border-radius:50px;opacity:0;transition:all .4s;pointer-events:none;white-space:nowrap;z-index:200;border:1px solid rgba(232,114,154,.25);max-width:90vw;overflow:hidden;text-overflow:ellipsis;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* CONFETTI */
+.confetti-piece{position:fixed;top:50%;left:50%;pointer-events:none;z-index:999;animation:confettiBurst 1.2s ease-out forwards;}
+@keyframes confettiBurst{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(.3) rotate(720deg)}}
+
+/* HEART TRAIL */
+.heart-trail{position:fixed;pointer-events:none;z-index:999;font-size:1rem;animation:heartFade .8s ease forwards;}
+@keyframes heartFade{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-30px) scale(.4)}}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* =================== PUBLIC PAGE =================== */
+#publicPage{background:linear-gradient(160deg,#0d0118 0%,#1a0828 40%,#0d0118 100%);padding-bottom:4rem;}
+
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5rem 1.2rem 3rem;z-index:1;background:radial-gradient(ellipse at 50% 30%,rgba(232,114,154,.15) 0%,transparent 65%);}
+.hero-flowers{font-size:clamp(1.5rem,4vw,2.2rem);display:block;margin-bottom:.8rem;letter-spacing:.5rem;opacity:0;animation:fadeIn 1s ease .2s forwards;}
+.hero-pre{font-family:'Cinzel',serif;font-size:clamp(.52rem,1.3vw,.75rem);letter-spacing:.5em;color:var(--rose2);text-transform:uppercase;margin-bottom:.8rem;opacity:0;animation:fadeUp 1s ease .5s forwards;}
+.hero-name{font-family:'Great Vibes',cursive;font-size:clamp(4rem,15vw,11rem);line-height:.95;background:linear-gradient(135deg,var(--rose) 0%,var(--rose2) 40%,var(--teal) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;opacity:0;animation:fadeUp 1.1s ease .8s forwards;filter:drop-shadow(0 4px 20px rgba(232,114,154,.3));}
+.gold-rule{width:clamp(80px,25vw,150px);height:1px;background:linear-gradient(90deg,transparent,var(--rose2),transparent);margin:1.2rem auto;opacity:0;animation:fadeIn 1.2s ease 1.3s forwards;}
+.date-badge{font-family:'Cinzel',serif;font-size:clamp(.58rem,1.4vw,.85rem);letter-spacing:.35em;color:var(--rose2);opacity:0;animation:fadeUp 1s ease 1.5s forwards;margin-bottom:1.4rem;}
+.tagline{font-size:clamp(1rem,2.8vw,1.55rem);font-style:italic;color:rgba(252,232,245,.8);max-width:500px;width:100%;line-height:1.8;opacity:0;animation:fadeUp 1s ease 1.8s forwards;margin-bottom:1.8rem;padding:0 .5rem;}
+.hero-btns{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;align-items:center;opacity:0;animation:fadeUp 1s ease 2.2s forwards;margin-bottom:2.5rem;}
+.scroll-cue{font-family:'Raleway',sans-serif;font-size:clamp(.58rem,1.2vw,.68rem);letter-spacing:.25em;text-transform:uppercase;color:var(--rose2);opacity:0;animation:fadeIn 1s ease 2.8s forwards,bounce 2s ease 3s infinite;}
+
+/* FAN CHOICE */
+.fan-choice-section{position:relative;z-index:1;padding:3rem 1.2rem;text-align:center;background:rgba(232,114,154,.05);}
+.fan-choice-box{max-width:540px;margin:0 auto;}
+.choice-label{font-family:'Cinzel',serif;font-size:clamp(.52rem,1.2vw,.65rem);letter-spacing:.3em;color:var(--rose2);text-transform:uppercase;margin-bottom:1rem;display:block;}
+.fan-note{font-size:clamp(.98rem,2.4vw,1.3rem);font-style:italic;color:rgba(252,232,245,.78);line-height:1.8;margin-bottom:1.4rem;}
+.choice-btns{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-bottom:1.2rem;}
+.fan-celebration{margin-top:1rem;padding:1.2rem;border:1px solid rgba(232,114,154,.18);border-radius:16px;background:rgba(232,114,154,.07);display:none;animation:fadeUp .6s ease forwards;}
+.fan-celebration.show{display:block;}
+.fan-celeb-title{font-family:'Cinzel',serif;font-size:clamp(.52rem,1.2vw,.65rem);letter-spacing:.22em;color:var(--rose2);text-transform:uppercase;margin-bottom:.5rem;display:block;}
+.fan-celeb-text{font-size:clamp(.93rem,2vw,1.08rem);font-style:italic;color:rgba(252,232,245,.78);line-height:1.7;}
+.fan-scene{font-size:clamp(1.8rem,5vw,2.8rem);display:block;margin:.7rem 0;}
+
+/* FAN MESSAGES */
+.fan-msgs-section{position:relative;z-index:1;padding:3rem 1.2rem;}
+.fan-msgs-inner{max-width:660px;margin:0 auto;}
+.fan-msg-card{background:rgba(42,13,62,.7);border-left:3px solid var(--rose);border-radius:12px;padding:1.1rem 1.3rem;margin-bottom:.9rem;box-shadow:0 2px 12px rgba(0,0,0,.25);opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;}
+.fan-msg-card.visible{opacity:1;transform:translateY(0);}
+.fan-msg-name{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--rose2);margin-bottom:.35rem;display:block;}
+.fan-msg-text{font-style:italic;font-size:clamp(.93rem,2vw,1.08rem);color:rgba(252,232,245,.78);line-height:1.6;}
+
+/* LETTER */
+.letter-section{position:relative;z-index:1;max-width:680px;width:100%;margin:0 auto;padding:3rem 1.2rem;}
+.letter-card{background:rgba(42,13,62,.8);border:1px solid rgba(232,114,154,.25);border-radius:16px;padding:2.5rem clamp(1.2rem,5vw,3.5rem);box-shadow:0 2px 0 rgba(232,114,154,.4),0 16px 50px rgba(0,0,0,.4);position:relative;opacity:0;transform:translateY(40px);transition:opacity .9s,transform .9s;backdrop-filter:blur(10px);}
+.letter-card.visible{opacity:1;transform:translateY(0);}
+.letter-card::before{content:'❝';position:absolute;top:.8rem;left:1.2rem;font-size:3rem;color:rgba(232,114,154,.18);font-family:'Great Vibes',cursive;line-height:1;}
+.letter-label{font-family:'Cinzel',serif;font-size:clamp(.52rem,1.1vw,.65rem);letter-spacing:.28em;color:var(--rose2);text-transform:uppercase;margin-bottom:1.3rem;display:block;}
+.letter-body{font-size:clamp(.98rem,2.3vw,1.15rem);font-style:italic;font-weight:300;line-height:2;color:rgba(252,232,245,.9);}
+.letter-body p+p{margin-top:1.1em;}
+.letter-sig{margin-top:1.8rem;text-align:right;font-family:'Great Vibes',cursive;font-size:clamp(1.4rem,3vw,1.9rem);color:var(--rose2);}
+.letter-actions{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-top:1.4rem;}
+
+/* WISHES */
+.wishes-section{position:relative;z-index:1;padding:3rem 1.2rem;text-align:center;border-top:1px solid rgba(232,114,154,.1);}
+.section-title{font-family:'Cinzel',serif;font-size:clamp(.52rem,1.1vw,.72rem);letter-spacing:.32em;color:var(--rose2);text-transform:uppercase;margin-bottom:.7rem;display:block;}
+.section-heading{font-family:'Great Vibes',cursive;font-size:clamp(2rem,5.5vw,3.5rem);background:linear-gradient(135deg,var(--rose),var(--rose2),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:2rem;line-height:1.2;}
+.wishes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr));gap:1rem;max-width:780px;margin:0 auto 2rem;}
+.wish-card{background:rgba(42,13,62,.7);border:1px solid rgba(232,114,154,.18);border-radius:16px;padding:1.4rem 1.1rem;opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s,box-shadow .3s;backdrop-filter:blur(6px);}
+.wish-card:hover{box-shadow:0 8px 28px rgba(232,114,154,.2);transform:translateY(-4px)!important;}
+.wish-card.visible{opacity:1;transform:translateY(0);}
+.wish-icon{font-size:1.7rem;margin-bottom:.5rem;display:block;}
+.wish-title{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.18em;color:var(--rose2);text-transform:uppercase;margin-bottom:.4rem;display:block;}
+.wish-text{font-size:clamp(.88rem,1.8vw,.98rem);font-style:italic;color:rgba(252,232,245,.72);line-height:1.7;}
+.wish-btns{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;}
+
+.finale{position:relative;z-index:1;text-align:center;padding:4rem 1.2rem 3rem;}
+.finale-flower{font-size:clamp(2.8rem,7vw,4.5rem);display:block;margin-bottom:1rem;animation:pulse 3s ease infinite;}
+.finale-msg{font-family:'Great Vibes',cursive;font-size:clamp(1.8rem,5vw,3.2rem);background:linear-gradient(135deg,var(--rose),var(--rose2),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.4;max-width:480px;margin:0 auto 1rem;}
+.finale-sub{font-family:'Raleway',sans-serif;font-size:clamp(.58rem,1.2vw,.75rem);letter-spacing:.2em;text-transform:uppercase;color:rgba(232,114,154,.55);margin-bottom:1.8rem;display:block;}
+.finale-btns{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;}
+
+/* =================== SECRET PAGE =================== */
+#secretPage{background:radial-gradient(ellipse at 20% 10%,#1e3a4a 0%,#0d0118 35%,#1a0828 70%,#0d2030 100%);min-height:100vh;color:var(--light);padding-bottom:4rem;}
+.petal-field-secret{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.petal-s{position:absolute;top:-30px;font-size:clamp(8px,1.5vw,13px);opacity:0;animation:fallPetal linear infinite;}
+
+.secret-hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5rem 1.2rem 3rem;z-index:1;background:radial-gradient(ellipse at 50% 30%,rgba(94,207,205,.12) 0%,transparent 65%);}
+.secret-flowers{font-size:clamp(1.4rem,3.5vw,2rem);letter-spacing:.4rem;display:block;margin-bottom:.8rem;opacity:0;animation:fadeIn 1s ease .3s forwards;}
+.secret-pre{font-family:'Cinzel',serif;font-size:clamp(.52rem,1.3vw,.7rem);letter-spacing:.45em;color:rgba(94,207,205,.8);text-transform:uppercase;margin-bottom:.8rem;opacity:0;animation:fadeUp 1s ease .6s forwards;}
+.secret-name{font-family:'Great Vibes',cursive;font-size:clamp(4rem,15vw,11rem);line-height:.95;background:linear-gradient(135deg,var(--teal) 0%,var(--mint) 40%,var(--rose2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;opacity:0;animation:fadeUp 1.1s ease .85s forwards;filter:drop-shadow(0 0 30px rgba(94,207,205,.4));}
+.secret-rule{width:clamp(80px,25vw,140px);height:1px;background:linear-gradient(90deg,transparent,var(--teal),transparent);margin:1.2rem auto;opacity:0;animation:fadeIn 1.2s ease 1.4s forwards;}
+.secret-date{font-family:'Cinzel',serif;font-size:clamp(.58rem,1.4vw,.85rem);letter-spacing:.35em;color:var(--teal);opacity:0;animation:fadeUp 1s ease 1.6s forwards;margin-bottom:1.4rem;}
+.secret-tagline{font-style:italic;font-size:clamp(1rem,2.8vw,1.55rem);color:rgba(168,237,234,.85);max-width:500px;width:100%;line-height:1.8;opacity:0;animation:fadeUp 1s ease 1.9s forwards;margin-bottom:2rem;padding:0 .5rem;}
+.secret-hero-btns{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;align-items:center;opacity:0;animation:fadeUp 1s ease 2.4s forwards;margin-bottom:2rem;}
+
+.secret-section{position:relative;z-index:1;max-width:700px;width:100%;margin:0 auto;padding:3rem 1.2rem;}
+.secret-card{background:rgba(13,1,24,.8);border:1px solid rgba(94,207,205,.22);border-radius:16px;padding:2.5rem clamp(1.2rem,5vw,3.5rem);box-shadow:0 2px 0 rgba(94,207,205,.35),0 16px 50px rgba(0,0,0,.5);position:relative;backdrop-filter:blur(12px);opacity:0;transform:translateY(40px);transition:opacity .9s,transform .9s;}
+.secret-card.visible{opacity:1;transform:translateY(0);}
+.secret-card::before{content:'❝';position:absolute;top:.8rem;left:1.2rem;font-size:3rem;color:rgba(94,207,205,.12);font-family:'Great Vibes',cursive;line-height:1;}
+.secret-label{font-family:'Cinzel',serif;font-size:clamp(.52rem,1.1vw,.62rem);letter-spacing:.28em;color:var(--teal);text-transform:uppercase;margin-bottom:1.3rem;display:block;}
+.secret-body{font-size:clamp(.98rem,2.3vw,1.15rem);font-style:italic;font-weight:300;line-height:2.1;color:rgba(252,232,245,.9);}
+.secret-body p+p{margin-top:1.1em;}
+.secret-sig{margin-top:1.8rem;text-align:right;font-family:'Great Vibes',cursive;font-size:clamp(1.4rem,3.5vw,2rem);color:var(--teal);text-shadow:0 2px 12px rgba(94,207,205,.3);}
+.secret-actions{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-top:1.4rem;}
+
+.reasons-section{position:relative;z-index:1;padding:3rem 1.2rem;text-align:center;border-top:1px solid rgba(94,207,205,.1);}
+.reasons-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(175px,100%),1fr));gap:.9rem;max-width:720px;margin:1.3rem auto;}
+.reason-card{background:rgba(13,32,48,.7);border:1px solid rgba(94,207,205,.15);border-radius:14px;padding:1.4rem 1.1rem;backdrop-filter:blur(8px);opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s,box-shadow .3s;}
+.reason-card:hover{box-shadow:0 8px 28px rgba(94,207,205,.2);transform:translateY(-4px)!important;}
+.reason-card.visible{opacity:1;transform:translateY(0);}
+.reason-num{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.28em;color:var(--teal);text-transform:uppercase;margin-bottom:.4rem;display:block;}
+.reason-text{font-size:clamp(.88rem,1.8vw,.98rem);font-style:italic;color:rgba(252,232,245,.82);line-height:1.7;}
+.s-section-title{font-family:'Cinzel',serif;font-size:clamp(.52rem,1.1vw,.7rem);letter-spacing:.32em;color:var(--teal);text-transform:uppercase;margin-bottom:.7rem;display:block;}
+.s-section-heading{font-family:'Great Vibes',cursive;font-size:clamp(2rem,5.5vw,3.5rem);background:linear-gradient(135deg,var(--teal),var(--mint),var(--rose2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.4rem;line-height:1.2;}
+.s-section-sub{font-size:clamp(.93rem,2vw,1.08rem);font-style:italic;color:rgba(168,237,234,.6);margin-bottom:1.4rem;line-height:1.6;}
+
+/* VIBES */
+.vibes-section{position:relative;z-index:1;padding:3rem 1.2rem;text-align:center;border-top:1px solid rgba(94,207,205,.1);}
+.vibes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(155px,100%),1fr));gap:.9rem;max-width:700px;margin:1.3rem auto;}
+.vibe-card{background:linear-gradient(135deg,rgba(13,32,48,.8),rgba(13,1,24,.9));border:1px solid rgba(94,207,205,.15);border-radius:14px;padding:1.6rem .9rem;text-align:center;opacity:0;transform:translateY(18px);transition:all .6s;}
+.vibe-card.visible{opacity:1;transform:translateY(0);}
+.vibe-card:hover{border-color:var(--teal);box-shadow:0 8px 28px rgba(94,207,205,.15);transform:translateY(-4px)!important;}
+.vibe-icon{font-size:2.2rem;display:block;margin-bottom:.5rem;}
+.vibe-title{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.18em;color:var(--teal);text-transform:uppercase;margin-bottom:.4rem;display:block;}
+.vibe-text{font-size:clamp(.86rem,1.7vw,.96rem);font-style:italic;color:rgba(252,232,245,.7);line-height:1.6;}
+
+.secret-finale{position:relative;z-index:1;text-align:center;padding:4rem 1.2rem 3rem;}
+
+/* HAPPY SCENE */
+#happyScene{display:none;position:fixed;inset:0;z-index:700;background:radial-gradient(ellipse at 50% 30%,#1e3a4a,#0d0118);align-items:center;justify-content:center;text-align:center;padding:1.5rem;flex-direction:column;overflow-y:auto;}
+#happyScene.show{display:flex;}
+.happy-close-btn{position:absolute;top:1rem;right:1rem;background:rgba(94,207,205,.15);border:1px solid rgba(94,207,205,.3);color:var(--teal);font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.18em;padding:.5rem .9rem;border-radius:20px;cursor:pointer;transition:all .3s;}
+.couple-stage{width:100%;max-width:340px;margin:0 auto 1.4rem;position:relative;text-align:center;}
+.heart-float{font-size:2rem;display:none;position:absolute;top:-28px;left:50%;transform:translateX(-50%);}
+.heart-float.show{display:block;animation:hFloat 1s ease infinite;}
+@keyframes hFloat{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-12px)}}
+.couple-wrap{display:flex;align-items:flex-end;justify-content:center;gap:2rem;padding:1rem 0;}
+.emoji-figure{display:flex;flex-direction:column;align-items:center;animation:figDance .7s ease-in-out infinite;}
+.girl-fig{animation-delay:.15s;}
+.emoji-body{font-size:clamp(3.5rem,11vw,5.5rem);line-height:1;display:block;}
+.emoji-flower{font-size:1.6rem;margin-top:-.4rem;animation:flowerWave 1s ease infinite;}
+@keyframes figDance{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes flowerWave{0%,100%{transform:rotate(-15deg)}50%{transform:rotate(15deg)}}
+.couple-wrap.kissing .guy-fig{animation:guyKiss 1s ease-in-out infinite!important;}
+.couple-wrap.kissing .girl-fig{animation:girlKiss 1s ease-in-out infinite!important;}
+@keyframes guyKiss{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-8px) rotate(8deg)}}
+@keyframes girlKiss{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-8px) rotate(-8deg)}}
+.happy-title{font-family:'Great Vibes',cursive;font-size:clamp(2rem,6vw,3.5rem);background:linear-gradient(135deg,var(--teal),var(--mint),var(--rose2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.5rem;line-height:1.2;}
+.happy-sub{font-family:'Raleway',sans-serif;font-size:clamp(.58rem,1.2vw,.75rem);letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:.8rem;opacity:.8;}
+.happy-note{font-style:italic;font-size:clamp(.92rem,2vw,1.05rem);color:rgba(168,237,234,.7);margin-bottom:1.3rem;}
+.happy-btns{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center;}
+.btn-kiss{background:linear-gradient(135deg,var(--teal),var(--rose));color:#fff;padding:.75rem 1.6rem;border-radius:50px;font-family:'Cinzel',serif;font-size:clamp(.52rem,.85vw+.28rem,.68rem);letter-spacing:.18em;text-transform:uppercase;border:none;cursor:pointer;transition:all .3s;animation:kissPulse 2s ease infinite;}
+@keyframes kissPulse{0%,100%{box-shadow:0 4px 18px rgba(94,207,205,.4)}50%{box-shadow:0 4px 28px rgba(232,114,154,.5)}}
+.btn-kiss:hover{transform:scale(1.05);}
+
+/* PHOTO */
+.photo-section{position:relative;z-index:1;text-align:center;padding:2rem 1rem 1.5rem;background:rgba(232,114,154,.04);}
+.photo-wrap{display:inline-block;position:relative;}
+.photo-glow-ring{position:absolute;inset:-8px;border-radius:28px;background:conic-gradient(from 0deg,var(--rose),var(--teal),var(--rose2),var(--teal),var(--rose));animation:ringRotate 4s linear infinite;filter:blur(6px);opacity:.7;z-index:0;}
+@keyframes ringRotate{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.photo-frame-pub{width:clamp(190px,52vw,270px);height:auto;border-radius:20px;display:block;position:relative;z-index:1;animation:photoFloat 4s ease-in-out infinite;box-shadow:0 0 0 4px rgba(232,114,154,.5),0 0 0 8px rgba(94,207,205,.2),0 16px 40px rgba(232,114,154,.3);}
+.photo-frame-sec{width:clamp(190px,52vw,270px);height:auto;border-radius:20px;display:block;position:relative;z-index:1;animation:photoFloat 4s ease-in-out infinite;box-shadow:0 0 0 4px rgba(94,207,205,.5),0 0 0 8px rgba(232,114,154,.2),0 16px 40px rgba(94,207,205,.3);}
+@keyframes photoFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-10px) scale(1.02)}}
+.photo-petal-l{position:absolute;left:-1.5rem;top:40%;font-size:1.4rem;animation:petalFloat 2s ease infinite;}
+.photo-petal-r{position:absolute;right:-1.5rem;top:40%;font-size:1.4rem;animation:petalFloat 2s ease .5s infinite;}
+@keyframes petalFloat{0%,100%{transform:translateY(0) rotate(-10deg)}50%{transform:translateY(-8px) rotate(10deg)}}
+.photo-caption{font-family:'Great Vibes',cursive;font-size:clamp(1.6rem,4.5vw,2.4rem);display:block;margin-top:.6rem;}
+.photo-sub{font-family:'Raleway',sans-serif;font-size:.72rem;letter-spacing:.15em;display:block;margin-top:.2rem;opacity:.6;}
+.photo-note{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(.9rem,2vw,1.05rem);margin-top:.5rem;display:block;max-width:300px;margin-left:auto;margin-right:auto;line-height:1.6;}
+
+/* CYBERJAY FOOTER */
+.cyberjay-footer{position:relative;z-index:1;text-align:center;padding:1.5rem 1rem;border-top:1px solid rgba(255, 255, 255, 0.1);}
+.cyberjay-footer.sec{border-top:1px solid rgba(255, 255, 255, 0.1);}
+.cyberjay-logo{font-family:'Cinzel',serif;font-size:clamp(.55rem,1.2vw,.68rem);letter-spacing:.25em;text-transform:uppercase;display:block;margin-bottom:.3rem;}
+.cyberjay-footer .pub-c{color:rgba(255, 255, 255, 0.5);}
+.cyberjay-footer .sec-c{color:rgba(255, 255, 255, 0.5);}
+.cyberjay-sub{font-family:'Raleway',sans-serif;font-size:.6rem;letter-spacing:.12em;opacity:.35;}
+
+/* INTERACTIVE HOVER CARDS */
+.wish-card{cursor:pointer;}
+.wish-card:active{transform:scale(.97)!important;}
+.reason-card{cursor:pointer;}
+.vibe-card{cursor:pointer;}
+
+/* TYPING NOTE */
+.typing-note{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(.95rem,2vw,1.1rem);color:rgba(232,114,154,.7);text-align:center;padding:.8rem 1.2rem;border-top:1px solid rgba(232,114,154,.08);border-bottom:1px solid rgba(232,114,154,.08);margin:0;overflow:hidden;white-space:nowrap;}
+.typing-note.sec-t{color:rgba(94,207,205,.7);border-color:rgba(94,207,205,.08);}
+.typing-note::after{content:'|';animation:blink .7s ease infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+</style>
+</head>
+<body>
+
+<!-- PUBLIC SONG -->
+<audio id="pubSong" loop><source src="/home/j_parrot/Downloads/birthday/pubsong.mp3" > </audio>
+<!-- SECRET SONG -->
+<audio id="secSong" loop>
+  <source src="/home/j_parrot/Downloads/birthday/secsong.mp3">
+</audio>
+<div class="petal-field" id="petalField"></div>
+<button class="back-btn" id="backBtn" onclick="goPublic()">← Fan Page</button>
+<button class="login-btn pub" id="loginBtnPublic" onclick="goLogin()" style="display:none;">🔒 Login</button>
+<button class="login-btn sec" id="loginBtnSecret" onclick="goLogin()" style="display:none;">🔒 Login</button>
+<div class="toast" id="toast"></div>
+
+<!-- LOCK SCREEN -->
+<div id="lockScreen">
+  <span class="lock-flower">🌸</span>
+  <p class="lock-title">A Special Celebration</p>
+  <h2 class="lock-name">Miss Muchiri</h2>
+  <p class="lock-sub">15th of May</p>
+  <div class="lock-divider"></div>
+  <p class="lock-hint">Enter your secret code<br>for your private birthday surprise 🌸</p>
+  <div class="pin-wrap">
+    <div class="pin-dot" id="dot0"></div>
+    <div class="pin-dot" id="dot1"></div>
+    <div class="pin-dot" id="dot2"></div>
+    <div class="pin-dot" id="dot3"></div>
+  </div>
+  <div class="numpad">
+    <button class="num-btn" onclick="numPress('1')">1</button>
+    <button class="num-btn" onclick="numPress('2')">2</button>
+    <button class="num-btn" onclick="numPress('3')">3</button>
+    <button class="num-btn" onclick="numPress('4')">4</button>
+    <button class="num-btn" onclick="numPress('5')">5</button>
+    <button class="num-btn" onclick="numPress('6')">6</button>
+    <button class="num-btn" onclick="numPress('7')">7</button>
+    <button class="num-btn" onclick="numPress('8')">8</button>
+    <button class="num-btn" onclick="numPress('9')">9</button>
+    <button class="num-btn" onclick="numPress('0')">0</button>
+    <button class="num-btn" onclick="numDelete()">⌫</button>
+  </div>
+  <p class="lock-error" id="lockError"></p>
+  <div class="fan-entry-box" onclick="goPublicFromLock()">
+    <span class="fan-entry-icon">🎉</span>
+    <span class="fan-entry-title">I'm a Fan — View Fan Page</span>
+    <p class="fan-entry-sub">No code needed · Join the birthday celebration!</p>
+  </div>
+</div>
+
+<!-- PUBLIC PAGE -->
+<div id="publicPage" class="page">
+  <section class="hero">
+    <span class="hero-flowers">🌸 🌺 🌸</span>
+    <p class="hero-pre">Happy Birthday</p>
+    <div class="hero-name">Miss Muchiri</div>
+    <div class="gold-rule"></div>
+    <p class="date-badge">15th of May</p>
+    <p class="tagline">The world is a warmer, brighter place because she's in it. Today we celebrate her. 🌸</p>
+    <div class="hero-btns">
+      <button class="btn btn-rose" onclick="celebrate()">🌸 Celebrate Miss Muchiri!</button>
+      <button class="btn btn-teal" onclick="scrollToLetter()">💌 Read the Letter</button>
+      <button class="btn btn-round" onclick="sendHeartBtn(this)">🌺</button>
+    </div>
+    <span class="scroll-cue">↓ &nbsp; scroll &nbsp; ↓</span>
+  </section>
+
+  <!-- PHOTO PUBLIC -->
+<!-- PHOTO PUBLIC -->
+<section class="photo-section">
+  <p class="typing-note" id="pubTyping"></p>
+  
+  <div class="photo-wrap">
+    <div class="photo-glow-ring" style="background:conic-gradient(from 0deg,var(--rose),var(--teal),var(--rose2),var(--teal),var(--rose));"></div>
+    <span class="photo-petal-l">🌸</span>
+    <img src="/home/j_parrot/Downloads/birthday/COO.jpeg" class="photo-frame-pub" alt="Muchiri">
+    <span class="photo-petal-r">🌺</span>
+  </div>
+  
+  <span class="photo-caption" style="color:var(--rose2);">Miss Muchiri 🌸</span>
+  <span class="photo-sub" style="color:var(--muted);">The girl everyone is celebrating today ✨</span>
+  <span class="photo-note" style="color:var(--muted);">"She walks in and the whole room changes energy — that's just who Miss Muchiri is." 💕</span>
+</section>
+
+  <section class="fan-choice-section">
+    <div class="fan-choice-box">
+      <span class="choice-label">It's Miss Muchiri's Birthday! 🎂</span>
+      <p class="fan-note">She deserves all the love today — how would <em>you</em> like to celebrate her?</p>
+      <div class="choice-btns">
+        <button class="btn btn-rose" onclick="fanChoice('dance')">💃 Dance for Her!</button>
+        <button class="btn btn-teal" onclick="fanChoice('sing')">🎶 Sing Happy Birthday!</button>
+      </div>
+      <div class="fan-celebration" id="fanDance">
+        <span class="fan-scene">💃🌸🎉</span>
+        <span class="fan-celeb-title">Dancing for Miss Muchiri!</span>
+        <p class="fan-celeb-text">The dance floor is yours! Miss Muchiri deserves every beautiful move today. Keep celebrating this wonderful girl! 🎊🌸</p>
+        <div style="margin-top:1rem;display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;">
+          <button class="btn btn-pill" onclick="burstConfetti()">🎊 More Confetti!</button>
+          <button class="btn btn-outline" onclick="fanChoice('sing')">🎶 Switch to Singing</button>
+        </div>
+      </div>
+      <div class="fan-celebration" id="fanSing">
+        <span class="fan-scene">🎤🎶🎂</span>
+        <span class="fan-celeb-title">Singing for Miss Muchiri!</span>
+        <p class="fan-celeb-text">🎵 <em>"Happy Birthday to you, Happy Birthday to you, Happy Birthday dear Miss Muchiri… Happy Birthday to youuu!"</em> 🎵<br><br>So beautiful! Muchiri would be so touched. 💕</p>
+        <div style="margin-top:1rem;display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;">
+          <button class="btn btn-pill" onclick="burstConfetti()">🎊 Throw Confetti!</button>
+          <button class="btn btn-outline" onclick="fanChoice('dance')">💃 Switch to Dancing</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fan-msgs-section">
+    <div class="fan-msgs-inner">
+      <span class="section-title" style="text-align:center;display:block;margin-bottom:1.3rem;">Messages from fans 💌</span>
+      <div class="fan-msg-card" id="fm1"><span class="fan-msg-name">Richard Mbugua. 🌸</span><p class="fan-msg-text">"Miss Muchiri you are genuinely one of the most beautiful souls I have ever met. Happy Birthday to someone who deserves the entire world! 🌸"</p></div>
+      <div class="fan-msg-card" id="fm2"><span class="fan-msg-name">Ashley. 🎉</span><p class="fan-msg-text">"Happy Birthday Miss Muchiri! The energy you bring into every space is unmatched. Stay glowing, stay amazing — you deserve it all! 💕"</p></div>
+      <div class="fan-msg-card" id="fm3"><span class="fan-msg-name">Mercy. ✨</span><p class="fan-msg-text">"Every room gets warmer when Miss Muchiri walks in. Today is your day — celebrate yourself the way we all celebrate you! 🎊🌺"</p></div>
+      <div class="fan-msg-card" id="fm4"><span class="fan-msg-name">Mary. 💛</span><p class="fan-msg-text">"Happy Birthday to one of the most genuine people I know. Miss Muchiri, your heart is your superpower. May this year be your best yet! 🥂"</p></div>
+    </div>
+  </section>
+
+  <section class="letter-section">
+    <div class="letter-card" id="letterCard">
+      <span class="letter-label">A Message for Miss Muchiri</span>
+      <div class="letter-body">
+        <p>Dear Miss Muchiri,</p>
+        <p>On this beautiful day, the world pauses to celebrate something truly rare — a woman of your warmth, your grace and your genuine spirit. You carry a light that you probably don't even see in yourself, but everyone around you feels it.</p>
+        <p>May this birthday open doors that lead to everything you have been quietly working towards. May every dream you've held close find its way to you this year. May you be surrounded by love as pure as the love you give.</p>
+        <p>You deserve every beautiful thing the world has to offer — today and always. Happy Birthday,Miss Muchiri. 🌸</p>
+      </div>
+      <div class="letter-sig">With love and warm wishes 💕</div>
+      <div class="letter-actions">
+        <button class="btn btn-pill" onclick="burstConfetti()">🎊 Throw Confetti</button>
+        <button class="btn btn-outline" onclick="copyWish()">📋 Copy Wish</button>
+        <button class="btn btn-round" onclick="sendHeartBtn(this)">💕</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="wishes-section">
+    <span class="section-title">Birthday wishes</span>
+    <h2 class="section-heading">For you, Miss Muchiri</h2>
+    <div class="wishes-grid" id="wishesGrid">
+      <div class="wish-card"><span class="wish-icon">🌸</span><span class="wish-title">Love</span><p class="wish-text">May your heart always overflow with the love you so freely give to others.</p></div>
+      <div class="wish-card"><span class="wish-icon">✨</span><span class="wish-title">Joy</span><p class="wish-text">May every morning this year arrive with something beautiful to look forward to.</p></div>
+      <div class="wish-card"><span class="wish-icon">🌺</span><span class="wish-title">Growth</span><p class="wish-text">May every version of you this year be more beautiful than the last.</p></div>
+      <div class="wish-card"><span class="wish-icon">🌟</span><span class="wish-title">Dreams</span><p class="wish-text">May every dream you've been holding close finally find its way home to you.</p></div>
+    </div>
+    <div class="wish-btns">
+      <button class="btn btn-rose" onclick="burstConfetti()">🎉 Party Time!</button>
+      <button class="btn btn-teal" onclick="sendHeartFromWishes()">💕 Send Love</button>
+      <button class="btn btn-outline" onclick="celebrate()">🌸 More Petals!</button>
+    </div>
+  </section>
+
+  <section class="finale">
+    <span class="finale-flower">🌸</span>
+    <p class="finale-msg">Happy Birthday,<br>sweet Miss Muchiri.<br>Here's to you. 🥂</p>
+    <span class="finale-sub">15th of May · A day the world is lucky to celebrate</span>
+    <div class="finale-btns">
+      <button class="btn btn-rose" onclick="burstConfetti();celebrate();">🎊 Big Celebration!</button>
+      <button class="btn btn-teal" onclick="shareWish()">🔗 Share This Page</button>
+      <button class="btn btn-round" onclick="sendHeartBtn(this)">🌸</button>
+      <button class="btn btn-round" onclick="sendHeartBtn(this)">💕</button>
+    </div>
+  </section>
+  <div class="cyberjay-footer">
+    <span class="cyberjay-logo pub-c">✦ Powered by CyberJay Holdings ™ 2024 ✦</span>
+    <span class="cyberjay-sub pub-c">Crafted with love · All rights reserved</span>
+  </div>
+</div>
+
+<!-- SECRET PAGE -->
+<div id="secretPage" class="page">
+  <div class="petal-field-secret" id="secretPetalField"></div>
+
+  <section class="secret-hero">
+    <span class="secret-flowers">🌸 ✨ 🌺</span>
+    <p class="secret-pre">Your Private Birthday World</p>
+    <div class="secret-name">Miss Muchiri</div>
+    <div class="secret-rule"></div>
+    <p class="secret-date">15th of May · Just for You 🔒</p>
+    <p class="secret-tagline">You found the secret side 💕<br>This beautiful space was made only for your eyes.</p>
+    <div class="secret-hero-btns">
+      <button class="btn btn-sec" onclick="secretCelebrate()">🌸 Our Celebration!</button>
+      <button class="btn btn-sec-outline" onclick="scrollToSecretLetter()">💌 Read Your Letter</button>
+      <button class="btn btn-sec-round" onclick="sendHeartBtn(this)">💕</button>
+    </div>
+  </section>
+
+  <!-- PHOTO SECRET -->
+<section class="photo-section">
+  <p class="typing-note" id="pubTyping"></p>
+  
+  <div class="photo-wrap">
+    <div class="photo-glow-ring" style="background:conic-gradient(from 0deg,var(--rose),var(--teal),var(--rose2),var(--teal),var(--rose));"></div>
+    <span class="photo-petal-l">🌸</span>
+    <img src="/home/j_parrot/Downloads/birthday/COO.jpeg" class="photo-frame-pub" alt="Muchiri">
+    <span class="photo-petal-r">🌺</span>
+  </div>
+  
+  <span class="photo-caption" style="color:var(--rose2);">Miss Muchiri 🌸</span>
+  <span class="photo-sub" style="color:var(--muted);">The girl everyone is celebrating today ✨</span>
+  <span class="photo-note" style="color:var(--muted);">"She walks in and the whole room changes energy — that's just who Miss Muchiri is." 💕</span>
+</section>
+
+  <section class="secret-section">
+    <div class="secret-card" id="secretLetterCard">
+      <span class="secret-label">A Letter Just for Miss Muchiri 🔒</span>
+      <div class="secret-body">
+        <p>Dearest Miss Muchiri,</p>
+        <p>This little corner was built only for you — a private celebration that speaks directly to your heart. Because you deserve a space where someone takes a moment to truly see you, appreciate you and celebrate you the way you deserve.</p>
+        <p>You are one of those rare human beings who makes life feel lighter for everyone around you. The way you love your people, the way you show up, the way you carry yourself through every season — it is something extraordinary.</p>
+        <p>On this birthday, I want you to hold onto this — you are deeply seen, deeply valued and deeply celebrated. Not just today. Always. This world is so much more beautiful because you are in it.</p>
+        <p>Happy Birthday,Miss Muchiri. This one is all yours. 🌸</p>
+      </div>
+      <div class="secret-sig">With so much love, always 💕</div>
+      <div class="secret-actions">
+        <button class="btn btn-sec" onclick="secretConfetti()">🎊 Celebrate!</button>
+        <button class="btn btn-sec-outline" onclick="copySecretWish()">📋 Save This</button>
+        <button class="btn btn-sec-round" onclick="sendHeartBtn(this)">🌸</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="reasons-section">
+    <span class="s-section-title">Just for you</span>
+    <h2 class="s-section-heading">Why you are one of a kind</h2>
+    <p class="s-section-sub">A few of the countless things that make Miss Muchiri so wonderfully her.</p>
+    <div class="reasons-grid" id="reasonsGrid">
+      <div class="reason-card"><span class="reason-num">01</span><p class="reason-text">The warmth you carry — it fills every room before you even say a word.</p></div>
+      <div class="reason-card"><span class="reason-num">02</span><p class="reason-text">How deeply you love the people in your life without keeping score.</p></div>
+      <div class="reason-card"><span class="reason-num">03</span><p class="reason-text">Your laugh — genuinely the kind that makes everyone around you smile too.</p></div>
+      <div class="reason-card"><span class="reason-num">04</span><p class="reason-text">The grace you carry through hard seasons without losing your softness.</p></div>
+      <div class="reason-card"><span class="reason-num">05</span><p class="reason-text">Every small beautiful detail about you that you probably overlook every day.</p></div>
+      <div class="reason-card"><span class="reason-num">06</span><p class="reason-text">Simply that you exist — and that the world gets to know you. 🌸</p></div>
+    </div>
+    <div style="margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;">
+      <button class="btn btn-sec" onclick="secretConfetti()">🎉 Celebrate!</button>
+      <button class="btn btn-sec-outline" onclick="secretCelebrate()">🌸 More Petals</button>
+      <button class="btn btn-sec-round" onclick="sendHeartBtn(this)">💕</button>
+    </div>
+  </section>
+
+  <section class="vibes-section">
+    <span class="s-section-title">This year is yours</span>
+    <h2 class="s-section-heading">What this year holds for you</h2>
+    <div class="vibes-grid" id="vibesGrid">
+      <div class="vibe-card"><span class="vibe-icon">🌸</span><span class="vibe-title">Blooming</span><p class="vibe-text">This is the year you step fully into everything you were always meant to be.</p></div>
+      <div class="vibe-card"><span class="vibe-icon">✨</span><span class="vibe-title">Glowing</span><p class="vibe-text">May your light be so bright this year that people wonder where it comes from.</p></div>
+      <div class="vibe-card"><span class="vibe-icon">💕</span><span class="vibe-title">Loved</span><p class="vibe-text">May you always feel as loved as you truly are — deeply and without condition.</p></div>
+      <div class="vibe-card"><span class="vibe-icon">🔥</span><span class="vibe-title">Unstoppable</span><p class="vibe-text">Every goal, every dream, every quiet ambition — this is the year they move.</p></div>
+    </div>
+  </section>
+
+  <section class="secret-finale">
+    <span style="font-size:clamp(2.8rem,7vw,4.5rem);display:block;margin-bottom:1rem;animation:pulse 3s ease infinite;">🌸</span>
+    <p style="font-family:'Great Vibes',cursive;font-size:clamp(1.8rem,5vw,3.2rem);background:linear-gradient(135deg,var(--teal),var(--mint),var(--rose2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.4;max-width:480px;margin:0 auto 1rem;">Happy Birthday,<br>dear Miss Muchiri.<br>Here's to you. 🥂</p>
+    <p style="font-family:'Raleway',sans-serif;font-size:clamp(.58rem,1.2vw,.75rem);letter-spacing:.2em;text-transform:uppercase;color:rgba(94,207,205,.55);margin-bottom:1.8rem;">15th of May · Your private birthday celebration 🔒</p>
+    <div style="display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;">
+      <button class="btn btn-sec" onclick="secretConfetti();secretCelebrate();">🎊 Grand Finale!</button>
+      <button class="btn btn-sec-outline" onclick="copySecretWish()">💌 Save This Moment</button>
+      <button class="btn btn-sec-round" onclick="sendHeartBtn(this)">🌸</button>
+      <button class="btn btn-sec-round" onclick="sendHeartBtn(this)">💕</button>
+    </div>
+  </section>
+  <div class="cyberjay-footer sec">
+    <span class="cyberjay-logo sec-c">✦ Powered by CyberJay Holdings ™ 2024 ✦</span>
+    <span class="cyberjay-sub sec-c">Crafted with love · All rights reserved</span>
+  </div>
+</div>
+
+<!-- HAPPY SCENE -->
+<div id="happyScene">
+  <button class="happy-close-btn" onclick="closeHappyScene()">✕ Close</button>
+  <div class="couple-stage">
+    <div class="heart-float" id="heartFloat">💕</div>
+    <div class="couple-wrap" id="coupleSvg">
+      <div class="emoji-figure guy-fig">
+        <div class="emoji-body">🕺</div>
+        <div class="emoji-flower">🌸</div>
+      </div>
+      <div class="emoji-figure girl-fig">
+        <div class="emoji-body">💃</div>
+      </div>
+    </div>
+  </div>
+  <p class="happy-title">Happy Birthday, Miss Muchiri! 🌸</p>
+  <p class="happy-sub">15th of May · Celebrating you!</p>
+  <p class="happy-note">Look at all this love just for you 🌸<br><em>You deserve every single bit of it.</em></p>
+  <div class="happy-btns">
+    <button class="btn-kiss" id="kissBtn" onclick="triggerKiss()">💃 Make Us Dance More!</button>
+    <button class="btn btn-sec" onclick="secretConfetti();secretConfetti();">🎊 More Confetti!</button>
+    <button class="btn btn-sec-outline" onclick="closeHappyScene()">💕 Go Back</button>
+  </div>
+</div>
+
+<script>
+  async function checkHash(i,h){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(i));const x=Array.from(new Uint8Array(b)).map(v=>v.toString(16).padStart(2,'0')).join('');return x===h;}
+  const SECRET_HASH='98c94daf4e5bd960b6189641a0aa2a161304529a4057f77f0c9bdfb6b9c66d98';
+  let pinEntry='',isSecret=false,kissing=false;
+
+  function numPress(n){if(pinEntry.length>=4)return;pinEntry+=n;updateDots();if(pinEntry.length===4)checkCode();}
+  function numDelete(){pinEntry=pinEntry.slice(0,-1);updateDots();document.getElementById('lockError').textContent='';}
+  function updateDots(){for(let i=0;i<4;i++)document.getElementById('dot'+i).classList.toggle('filled',i<pinEntry.length);}
+  async function checkCode(){
+    const ok=await checkHash(pinEntry,SECRET_HASH);
+    if(ok){goSecret();}
+    else{document.getElementById('lockError').textContent='✗ Wrong code — try again';pinEntry='';updateDots();setTimeout(()=>document.getElementById('lockError').textContent='',2000);}
+  }
+
+  function goSecret(){
+    document.getElementById('lockScreen').classList.add('fade-out');
+    setTimeout(()=>{
+      document.getElementById('lockScreen').style.display='none';
+      document.getElementById('publicPage').classList.remove('active');
+      document.getElementById('secretPage').classList.add('active');
+      document.getElementById('backBtn').classList.add('show');
+      document.getElementById('loginBtnPublic').style.display='none';
+      document.getElementById('loginBtnSecret').style.display='block';
+      document.querySelector('.petal-field').style.display='none';
+      isSecret=true; spawnSecretPetals(); initSecretObserver(); secretCelebrate(); playSec(); setTimeout(()=>typeWriter('secTyping','🌸 Welcome to your private world,Miss Muchiri. This is all for you. 💕',60),800);
+      showToast('🌸 Welcome, Miss Muchiri! This is just for you!');
+    },800);
+  }
+  function goPublicFromLock(){
+    document.getElementById('lockScreen').classList.add('fade-out');
+    setTimeout(()=>{
+      document.getElementById('lockScreen').style.display='none';
+      document.getElementById('publicPage').classList.add('active');
+      document.getElementById('loginBtnPublic').style.display='block';
+      initPublicObserver(); spawnPublicPetals(); playPub(); setTimeout(()=>typeWriter('pubTyping','✨ Scroll down to see who we are celebrating today! 🌸',60),800);
+    },500);
+  }
+  function goLogin(){
+    stopPub(); stopSec();
+    document.getElementById('publicPage').classList.remove('active');
+    document.getElementById('secretPage').classList.remove('active');
+    document.getElementById('backBtn').classList.remove('show');
+    document.getElementById('loginBtnPublic').style.display='none';
+    document.getElementById('loginBtnSecret').style.display='none';
+    document.querySelector('.petal-field').style.display='none';
+    isSecret=false; pinEntry=''; updateDots(); document.getElementById('lockError').textContent='';
+    const ls=document.getElementById('lockScreen'); ls.style.display='flex'; ls.classList.remove('fade-out'); ls.style.opacity='1';
+  }
+  function goPublic(){
+    stopSec();
+    document.getElementById('secretPage').classList.remove('active');
+    document.getElementById('publicPage').classList.add('active');
+    document.getElementById('backBtn').classList.remove('show');
+    document.getElementById('loginBtnSecret').style.display='none';
+    document.getElementById('loginBtnPublic').style.display='block';
+    document.querySelector('.petal-field').style.display='block';
+    isSecret=false; playPub(); showToast('Back to the fan page 🌸');
+  }
+
+  function playPub(){var a=document.getElementById('pubSong');a.volume=0.4;a.play().catch(function(){});}
+  function stopPub(){document.getElementById('pubSong').pause();}
+  function playSec(){stopPub();var a=document.getElementById('secSong');a.volume=0.4;a.play().catch(function(){});}
+  function stopSec(){document.getElementById('secSong').pause();}
+
+  function spawnPublicPetals(){
+    const emojis=['🌸','🌺','✨','💕','🌷'];
+    const f=document.getElementById('petalField');
+    for(let i=0;i<22;i++){const p=document.createElement('div');p.className='petal';p.textContent=emojis[Math.floor(Math.random()*emojis.length)];p.style.cssText=`left:${Math.random()*100}%;animation-delay:${Math.random()*18}s;animation-duration:${8+Math.random()*10}s;opacity:0;`;f.appendChild(p);}
+  }
+  spawnPublicPetals();
+  function spawnSecretPetals(){
+    const emojis=['🌸','✨','💕','🌟','🌺'];
+    const f=document.getElementById('secretPetalField');if(!f)return;
+    for(let i=0;i<22;i++){const p=document.createElement('div');p.className='petal-s';p.textContent=emojis[Math.floor(Math.random()*emojis.length)];p.style.cssText=`left:${Math.random()*100}%;animation-delay:${Math.random()*18}s;animation-duration:${7+Math.random()*10}s;opacity:0;`;f.appendChild(p);}
+  }
+
+  function initPublicObserver(){
+    const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(!x.isIntersecting)return;if(x.target.id==='wishesGrid'){[...x.target.children].forEach((c,i)=>setTimeout(()=>c.classList.add('visible'),i*150));}else x.target.classList.add('visible');obs.unobserve(x.target);});},{threshold:0.1});
+    ['letterCard','wishesGrid','fm1','fm2','fm3','fm4'].forEach(id=>{const el=document.getElementById(id);if(el)obs.observe(el);});
+  }
+  initPublicObserver();
+  function initSecretObserver(){
+    const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(!x.isIntersecting)return;if(x.target.id==='reasonsGrid'){[...x.target.children].forEach((c,i)=>setTimeout(()=>c.classList.add('visible'),i*130));}else if(x.target.id==='vibesGrid'){[...x.target.children].forEach((c,i)=>setTimeout(()=>c.classList.add('visible'),i*120));}else x.target.classList.add('visible');obs.unobserve(x.target);});},{threshold:0.1});
+    ['secretLetterCard','reasonsGrid','vibesGrid'].forEach(id=>{const el=document.getElementById(id);if(el)obs.observe(el);});
+  }
+
+  function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
+
+  function burstConfetti(colors){
+    colors=colors||['#e8729a','#5ecfcd','#f5c842','#f0a0bb','#a8edea','#fff'];
+    for(let i=0;i<60;i++){const d=document.createElement('div');d.className='confetti-piece';const angle=(Math.PI*2/60)*i,dist=100+Math.random()*140;d.style.setProperty('--tx',`${Math.cos(angle)*dist}px`);d.style.setProperty('--ty',`${Math.sin(angle)*dist-70}px`);d.style.background=colors[Math.floor(Math.random()*colors.length)];d.style.width=d.style.height=`${4+Math.random()*7}px`;d.style.borderRadius=Math.random()>.5?'50%':'2px';document.body.appendChild(d);setTimeout(()=>d.remove(),1300);}
+  }
+  function secretConfetti(){burstConfetti(['#5ecfcd','#a8edea','#e8729a','#f0a0bb','#f5c842']);showToast('🌸 Celebrating you,Miss  Muchiri!');}
+
+  function celebrate(){
+    const f=document.getElementById('petalField');
+    const em=['🌸','🌺','✨','💕'];
+    for(let i=0;i<14;i++){setTimeout(()=>{const p=document.createElement('div');p.className='petal';p.textContent=em[Math.floor(Math.random()*em.length)];p.style.cssText=`left:${Math.random()*100}%;animation-delay:0s;animation-duration:${3+Math.random()*3}s;opacity:0;`;f.appendChild(p);setTimeout(()=>p.remove(),6000);},i*80);}
+    burstConfetti(); showToast('🌸 Showering Miss Muchiri with love!');
+  }
+  function secretCelebrate(){
+    const f=document.getElementById('secretPetalField');if(!f)return;
+    const em=['🌸','✨','💕','🌟'];
+    for(let i=0;i<18;i++){setTimeout(()=>{const p=document.createElement('div');p.className='petal-s';p.textContent=em[Math.floor(Math.random()*em.length)];p.style.cssText=`left:${Math.random()*100}%;animation-delay:0s;animation-duration:${3+Math.random()*3}s;opacity:0;`;f.appendChild(p);setTimeout(()=>p.remove(),6000);},i*80);}
+    showToast('🌸 Your secret celebration! 💕');
+  }
+
+  function fanChoice(type){
+    document.getElementById('fanDance').classList.remove('show');
+    document.getElementById('fanSing').classList.remove('show');
+    if(type==='dance'){document.getElementById('fanDance').classList.add('show');burstConfetti();showToast('💃 Dance for Muchiri!');}
+    else{document.getElementById('fanSing').classList.add('show');burstConfetti();showToast('🎶 Sing for Miss Muchiri!');}
+  }
+
+  document.addEventListener('click',function(e){if(e.target.closest('button')||e.target.closest('.num-btn')||e.target.closest('.fan-entry-box'))return;spawnHeart(e.clientX,e.clientY);});
+  function spawnHeart(x,y){const h=isSecret?['💕','🌸','✨','🌺','💫']:['💕','🌸','✨','🌺','🌟'];const el=document.createElement('div');el.className='heart-trail';el.textContent=h[Math.floor(Math.random()*h.length)];el.style.left=x+'px';el.style.top=y+'px';document.body.appendChild(el);setTimeout(()=>el.remove(),900);}
+  function sendHeartBtn(btn){const r=btn.getBoundingClientRect();for(let i=0;i<5;i++)setTimeout(()=>spawnHeart(r.left+r.width/2+(Math.random()-.5)*40,r.top-10),i*80);showToast(isSecret?'💕 Sending love to Miss Muchiri!':'💕 Sending love to Miss Muchiri!');}
+  function sendHeartFromWishes(){const btns=document.querySelectorAll('.btn-round');if(btns.length)sendHeartBtn(btns[Math.floor(Math.random()*btns.length)]);}
+
+  function scrollToLetter(){document.getElementById('letterCard').scrollIntoView({behavior:'smooth',block:'center'});showToast('💌 A message for Muchiri…');}
+  function scrollToSecretLetter(){document.getElementById('secretLetterCard').scrollIntoView({behavior:'smooth',block:'center'});showToast('💌 Your private letter, Miss Muchiri 🔒');}
+
+  function copyWish(){navigator.clipboard.writeText("Dear Muchiri,\n\nYou carry a light that you probably don't even see in yourself, but everyone around you feels it.\n\nHappy Birthday! 🌸").then(()=>showToast('📋 Wish copied! 💕'));}
+  function copySecretWish(){navigator.clipboard.writeText("My dearest Muchiri,\n\nYou are one of those rare human beings who makes life feel lighter for everyone around you.\n\nHappy Birthday, Miss Muchiri. This one is all yours. 🌸").then(()=>showToast('📋 Saved! 💕'));}
+
+  function shareWish(){if(navigator.share){navigator.share({title:'Happy Birthday Miss Muchiri! 🌸',text:'A special birthday page for Miss Muchiri 🌸',url:window.location.href});}else{navigator.clipboard.writeText(window.location.href).then(()=>showToast('🔗 Link copied! 💕'));}}
+
+  function closeHappyScene(){document.getElementById('happyScene').classList.remove('show');if(kissing){kissing=false;document.getElementById('coupleSvg').classList.remove('kissing');document.getElementById('heartFloat').classList.remove('show');}}
+  function triggerKiss(){
+    kissing=!kissing;
+    document.getElementById('coupleSvg').classList.toggle('kissing',kissing);
+    document.getElementById('heartFloat').classList.toggle('show',kissing);
+    document.getElementById('kissBtn').textContent=kissing?'🛑 Stop':'💃 Make Us Dance More!';
+    if(kissing){burstConfetti(['#5ecfcd','#e8729a','#fff','#f5c842']);showToast('🌸 Dancing together! 💕');}
+  }
+
+  /* TYPING NOTES */
+  function typeWriter(elId, text, speed){
+    const el=document.getElementById(elId); if(!el)return;
+    el.textContent=''; let i=0;
+    function type(){if(i<text.length){el.textContent+=text[i++];setTimeout(type,speed);}};
+    type();
+  }
+
+  /* WISH CARD CLICK INTERACTION */
+  document.querySelectorAll && setTimeout(()=>{
+    document.querySelectorAll('.wish-card').forEach(c=>{
+      c.addEventListener('click',()=>{burstConfetti();showToast('🌸 A wish sent to Miss Muchiri!');});
+    });
+    document.querySelectorAll('.reason-card').forEach(c=>{
+      c.addEventListener('click',()=>{secretConfetti();showToast('💕 So true about Miss Muchiri!');});
+    });
+    document.querySelectorAll('.vibe-card').forEach(c=>{
+      c.addEventListener('click',()=>{secretConfetti();showToast('✨ This year is yours, Miss Muchiri!');});
+    });
+  },500);
+
+
+  /* AUTOPLAY ON FIRST TOUCH */
+  var _started = false;
+  function tryAutoplay(){
+    if(_started) return; _started=true;
+    if(typeof playPub === 'function' && !isSecret) playPub();
+    if(typeof playSec === 'function' && isSecret) playSec();
+  }
+  document.addEventListener('click', tryAutoplay, {once:false});
+  document.addEventListener('touchstart', tryAutoplay, {once:false});
+
+</script>
+</body>
+</html>
